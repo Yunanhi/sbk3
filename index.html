@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBK - 20년 전통의 PCR 진단키트 전문 기업</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sbk: {
+                            warmBg: '#FAF7F2',
+                            cardBg: '#FFFFFF',
+                            primary: '#0D7C66',
+                            primaryHover: '#0A6251',
+                            primaryLight: '#E8F5E9',
+                            secondary: '#41B3A2',
+                            warmAccent: '#E88D67',
+                            darkText: '#2D3748',
+                            lightText: '#718096',
+                            borderColor: '#E2E8F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #FAF7F2;
+            color: #2D3748;
+        }
+        .tab-btn.active {
+            background-color: #0D7C66;
+            color: #FFFFFF;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(13, 124, 102, 0.25);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #0D7C66 0%, #07483B 60%, #1A365D 100%);
+        }
+        .smooth-shadow {
+            box-shadow: 0 10px 30px -5px rgba(13, 124, 102, 0.08);
+        }
+        .subtab-btn.active { background:#0D7C66; color:#fff; box-shadow:0 4px 12px rgba(13,124,102,.25); }
+        .thumb-btn.active { border-color:#0D7C66; box-shadow:0 0 0 2px #0D7C66; }
+        .no-scrollbar::-webkit-scrollbar { display:none; }
+        .quiz-option:hover {
+            border-color: #0D7C66;
+            background-color: #E8F5E9;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-panel shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Company Name -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('main')">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-sbk-primary to-sbk-secondary flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid font-bold text-2xl">SBK</i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-black tracking-tight text-sbk-primary">주식회사 SBK</span>
+                            <span class="bg-sbk-warmAccent text-white text-xs font-semibold px-2 py-0.5 rounded-full">20th Anniversary</span>
+                        </div>
+                        <p class="text-xs font-medium text-sbk-lightText">20년 전통의 신뢰받는 PCR 체외진단의료기기 제조기업</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden lg:flex items-center space-x-1 bg-gray-100/80 p-1.5 rounded-2xl border border-gray-200">
+                    <button onclick="switchTab('regulations')" id="tab-regulations" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all text-gray-700 hover:text-sbk-primary">
+                        <i class="fa-solid fa-scale-balanced mr-1.5"></i>법령
+                    </button>
+                    <button onclick="switchTab('sop')" id="tab-sop" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all text-gray-700 hover:text-sbk-primary">
+                        <i class="fa-solid fa-file-shield mr-1.5"></i>품질 절차서
+                    </button>
+                    <button onclick="switchTab('forms')" id="tab-forms" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all text-gray-700 hover:text-sbk-primary">
+                        <i class="fa-solid fa-folder-open mr-1.5"></i>관련양식
+                    </button>
+                    <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all text-gray-700 hover:text-sbk-primary">
+                        <i class="fa-solid fa-square-poll-vertical mr-1.5"></i>Quiz
+                    </button>
+                    <button onclick="switchTab('video')" id="tab-video" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all text-gray-700 hover:text-sbk-primary">
+                        <i class="fa-solid fa-circle-play mr-1.5"></i>비디오 오버뷰
+                    </button>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="switchTab('video')" class="bg-sbk-primary text-white hover:bg-sbk-primaryHover px-4 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i>
+                        <span>홍보 동영상 보기</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Nav Bar -->
+            <div class="lg:hidden flex overflow-x-auto py-2 gap-1 border-t border-gray-100 scrollbar-none">
+                <button onclick="switchTab('regulations')" id="mtab-regulations" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-xs font-medium bg-white border">법령</button>
+                <button onclick="switchTab('sop')" id="mtab-sop" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-xs font-medium bg-white border">품질 절차서</button>
+                <button onclick="switchTab('forms')" id="mtab-forms" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-xs font-medium bg-white border">관련양식</button>
+                <button onclick="switchTab('quiz')" id="mtab-quiz" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-xs font-medium bg-white border">Quiz</button>
+                <button onclick="switchTab('video')" id="mtab-video" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-xs font-medium bg-white border">비디오 오버뷰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= MAIN PAGE HERO & OVERVIEW ================= -->
+        <section id="page-main" class="tab-content space-y-12">
+            <div class="relative rounded-3xl overflow-hidden gradient-hero text-white p-8 md:p-12 shadow-xl">
+                <div class="absolute inset-0 bg-black/20 z-0"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold text-emerald-100">
+                            <i class="fa-solid fa-microscope text-sbk-warmAccent"></i>
+                            <span>Real-time Multiplex PCR Diagnostic Technology</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+                            정확함 그 이상의 가치,<br>
+                            <span class="text-sbk-warmAccent">20년 진단키트 전문기업</span> SBK
+                        </h1>
+                        <p class="text-gray-200 text-sm md:text-base leading-relaxed">
+                            (주)SBK는 ISO 13485 및 ISO 14971 국제 규격과 체외진단의료기기법 표준을 엄격히 준수합니다. 세균성 식중독 및 장염 원인균을 정확하게 검출하는 분자진단 솔루션을 지금 확인하세요.
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="switchTab('video')" class="bg-sbk-warmAccent hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg flex items-center gap-2">
+                                <i class="fa-solid fa-circle-play text-lg"></i>
+                                <span>홍보 영상 바로보기</span>
+                            </button>
+                            <button onclick="switchTab('sop')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl backdrop-blur-md border border-white/30 transition-all">
+                                품질 절차서 열람
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 text-center hover:scale-105 transition-all">
+                            <img src="https://images.unsplash.com/photo-1583912267670-6575ad472688?auto=format&fit=crop&w=400&q=80" alt="PCR Kit Real-time" class="w-full h-32 object-cover rounded-xl mb-2">
+                            <span class="text-xs font-bold block text-emerald-100">식중독 Real-time PCR</span>
+                            <span class="text-[10px] text-gray-300">SOP-RA-701 검증완료</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 text-center hover:scale-105 transition-all">
+                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=400&q=80" alt="PCR MasterMix" class="w-full h-32 object-cover rounded-xl mb-2">
+                            <span class="text-xs font-bold block text-emerald-100">MasterMix 시약</span>
+                            <span class="text-[10px] text-gray-300">Cold Chain 유지 관리</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 text-center hover:scale-105 transition-all">
+                            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=400&q=80" alt="Automated Test" class="w-full h-32 object-cover rounded-xl mb-2">
+                            <span class="text-xs font-bold block text-emerald-100">자동화 분주 솔루션</span>
+                            <span class="text-[10px] text-gray-300">FMEA 위험 제어 완료</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 text-center hover:scale-105 transition-all">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80" alt="Lab Quality" class="w-full h-32 object-cover rounded-xl mb-2">
+                            <span class="text-xs font-bold block text-emerald-100">ISO 13485 인증시설</span>
+                            <span class="text-[10px] text-gray-300">100% 추적 가능 품질</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-sbk-darkText">SBK 핵심 카테고리 바로가기</h2>
+                    <p class="text-sbk-lightText text-sm mt-2">SBK의 통합 품질경영 시스템 및 규정 문서, 셀프 테스트 시스템을 확인하세요.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div onclick="switchTab('regulations')" class="bg-white p-6 rounded-2xl border border-sbk-borderColor hover:border-sbk-primary hover:shadow-lg transition-all cursor-pointer group text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-sbk-primary flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-1">1. 법령</h3>
+                        <p class="text-xs text-sbk-lightText">ISO 13485, 14971, 체외의료진단기기법 실시간 링크</p>
+                    </div>
+
+                    <div onclick="switchTab('sop')" class="bg-white p-6 rounded-2xl border border-sbk-borderColor hover:border-sbk-primary hover:shadow-lg transition-all cursor-pointer group text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-sbk-secondary flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-file-shield"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-1">2. 품질 절차서</h3>
+                        <p class="text-xs text-sbk-lightText">문서, 위험, 시험검사, 추적, CAPA 절차서 5종</p>
+                    </div>
+
+                    <div onclick="switchTab('forms')" class="bg-white p-6 rounded-2xl border border-sbk-borderColor hover:border-sbk-primary hover:shadow-lg transition-all cursor-pointer group text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-1">3. 관련양식</h3>
+                        <p class="text-xs text-sbk-lightText">표준 품질 기록 양식 열람 및 즉시 다운로드</p>
+                    </div>
+
+                    <div onclick="switchTab('quiz')" class="bg-white p-6 rounded-2xl border border-sbk-borderColor hover:border-sbk-primary hover:shadow-lg transition-all cursor-pointer group text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-1">4. Quiz</h3>
+                        <p class="text-xs text-sbk-lightText">절차서 기반 25문항 대화형 랜덤 자가 평가</p>
+                    </div>
+
+                    <div onclick="switchTab('video')" class="bg-white p-6 rounded-2xl border border-sbk-borderColor hover:border-sbk-primary hover:shadow-lg transition-all cursor-pointer group text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-50 text-sbk-warmAccent flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-circle-play"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-1">5. 비디오 오버뷰</h3>
+                        <p class="text-xs text-sbk-lightText">위험관리 표준절차서 프리미엄 홍보동영상</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border border-sbk-borderColor smooth-shadow">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-2xl">
+                        <span class="text-xs font-bold text-sbk-primary uppercase tracking-wider bg-sbk-primaryLight px-3 py-1 rounded-full">Primary Product Line</span>
+                        <h3 class="text-2xl font-bold text-sbk-darkText">세균성 식중독 및 장염 Multiplex PCR 진단키트</h3>
+                        <p class="text-sbk-lightText text-sm leading-relaxed">
+                            Salmonella spp., STEC/EHEC, B. cereus, Shigella/EIEC, Campylobacter 등 식중독 원인균을 원스톱으로 고감도 정성 검출하는 대표 체외진단 시약입니다.
+                        </p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-extrabold text-sbk-primary">99.9%</div>
+                            <div class="text-xs text-sbk-lightText mt-1">진단 특이도</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-extrabold text-sbk-primary">20년</div>
+                            <div class="text-xs text-sbk-lightText mt-1">품질 무사고</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 1: 법령 ================= -->
+        <section id="page-regulations" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-sbk-borderColor smooth-shadow">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-sbk-primaryLight text-sbk-primary flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-sbk-darkText">관련 법령 및 국제 규격 검색 링크</h2>
+                        <p class="text-xs text-sbk-lightText">최신 버전의 체외진단의료기기법, 의료기기법 및 ISO 표준 규격을 확인할 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50/30 p-6 rounded-2xl border border-emerald-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">e-나라표준인증</span>
+                                <i class="fa-solid fa-award text-emerald-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-sbk-darkText mb-2">국제 표준 규격 (ISO)</h3>
+                            <p class="text-xs text-sbk-lightText mb-4 leading-relaxed">
+                                체외진단의료기기 품질경영시스템(ISO 13485) 및 의료기기 위험관리(ISO 14971) 최신 표준 기준 검색
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-700 mb-6">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-sbk-primary text-xs"></i>
+                                    <span><strong>KS Q ISO 13485</strong> : 의료기기 품질경영시스템</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-sbk-primary text-xs"></i>
+                                    <span><strong>KS P ISO 14971</strong> : 의료기기 위험관리 적용</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://www.standard.go.kr" target="_blank" rel="noopener" class="w-full bg-sbk-primary hover:bg-sbk-primaryHover text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                            <span>e-나라표준인증 최신 규격 바로가기</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50/30 p-6 rounded-2xl border border-blue-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">국가법령정보센터</span>
+                                <i class="fa-solid fa-landmark text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-sbk-darkText mb-2">국내 의료기기 관련 법률</h3>
+                            <p class="text-xs text-sbk-lightText mb-4 leading-relaxed">
+                                체외진단의료기기법, 의료기기법 및 식품의약품안전처 관련 고시 최신 버전 실시간 조회
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-700 mb-6">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-600 text-xs"></i>
+                                    <span><strong>체외진단의료기기법</strong> (최신 법률 제호)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-600 text-xs"></i>
+                                    <span><strong>의료기기법</strong> 및 시행규칙</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://www.law.go.kr" target="_blank" rel="noopener" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                            <span>국가법령정보센터 최신 법령 바로가기</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: 품질 절차서 ================= -->
+        <section id="page-sop" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-sbk-borderColor smooth-shadow">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sbk-primaryLight text-sbk-primary flex items-center justify-center font-bold text-xl">
+                            <i class="fa-solid fa-file-shield"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-sbk-darkText">SBK 품질 절차서 (SOP)</h2>
+                            <p class="text-xs text-sbk-lightText">요약을 확인하고, 원문을 열람하거나 원본 파일을 다운로드할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-6 bg-gray-100/80 p-1.5 rounded-2xl border border-gray-200 w-fit max-w-full overflow-x-auto no-scrollbar">
+                    <button id="subtab-list" onclick="switchSopPane('list')" class="subtab-btn active whitespace-nowrap px-5 py-2 rounded-xl text-sm font-medium text-gray-700 transition-all"><i class="fa-solid fa-file-lines mr-1.5"></i>절차서 목록</button>
+                    <button id="subtab-forms" onclick="switchSopPane('forms')" class="subtab-btn whitespace-nowrap px-5 py-2 rounded-xl text-sm font-medium text-gray-700 transition-all"><i class="fa-solid fa-table-list mr-1.5"></i>양식 미리보기</button>
+                </div>
+
+                <div id="sop-pane-list">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="sop-list-container"></div>
+                </div>
+
+                <div id="sop-pane-forms" class="hidden space-y-6">
+                    <p class="text-xs text-sbk-lightText">각 절차서에 연결된 기록 양식의 요약입니다. 양식을 눌러 페이지 이미지를 확인하거나 PDF 파일을 다운로드할 수 있습니다.</p>
+                    <div id="sop-forms-container" class="space-y-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: 관련양식 ================= -->
+        <section id="page-forms" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-sbk-borderColor smooth-shadow">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-sbk-darkText">SBK 품질 관리 표준 양식</h2>
+                            <p class="text-xs text-sbk-lightText">5대 품질 양식을 페이지 이미지로 미리 확인하고 PDF 파일로 다운로드할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="forms-list-container">
+                    <!-- Cards will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: Quiz ================= -->
+        <section id="page-quiz" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-sbk-borderColor smooth-shadow">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-2xl">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-sbk-darkText">PCR 진단키트 품질 자가 평가 Quiz (총 25문항)</h2>
+                            <p class="text-xs text-sbk-lightText">문서관리, 위험관리, 시험검사, 식별추적, CAPA 5개 절차서에서 각 5문제씩 출제됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="loadRandomQuiz()" class="bg-sbk-warmAccent hover:bg-orange-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>새로고침 (문제 랜덤 섞기)</span>
+                        </button>
+                        <button onclick="submitQuiz()" class="bg-sbk-primary hover:bg-sbk-primaryHover text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md">
+                            채점하기
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-score-board" class="hidden bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-8 text-center">
+                    <h3 class="text-xl font-bold text-sbk-primary mb-1">채점 완료!</h3>
+                    <p class="text-3xl font-black text-sbk-darkText my-2" id="score-text">0 / 25 점</p>
+                    <p class="text-xs text-sbk-lightText" id="score-feedback">문제를 다시 확인하고 틀린 정답을 복습하세요.</p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6"></div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: 비디오 오버뷰 ================= -->
+        <section id="page-video" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-sbk-borderColor smooth-shadow">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-orange-100 text-sbk-warmAccent flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-sbk-darkText">세균성 식중독 및 장염 PCR 진단키트 위험관리 절차 오버뷰 동영상</h2>
+                        <p class="text-xs text-sbk-lightText">4분 분량의 MP4 홍보 및 표준절차서 설명 동영상입니다.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-8 space-y-3">
+                        <div class="bg-black rounded-3xl overflow-hidden shadow-2xl relative">
+                            <video id="pcr-overview-video" controls playsinline preload="metadata" class="w-full h-auto aspect-video rounded-3xl" poster="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80">
+                                <source src="video.mp4" type="video/mp4">
+                                사용 중인 브라우저가 비디오 재생을 지원하지 않습니다.
+                            </video>
+                        </div>
+                        <p id="video-error" class="hidden text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3">
+                            영상을 불러오지 못했습니다. 저장소에 <strong>video.mp4</strong> 파일이 index.html과 같은 위치에 있는지 확인해 주세요.
+                        </p>
+                        <a href="video.mp4" download class="inline-flex items-center gap-2 text-xs font-bold text-sbk-primary hover:underline">
+                            <i class="fa-solid fa-download"></i> 영상 파일 다운로드
+                        </a>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-gray-50 p-6 rounded-3xl border border-gray-200 space-y-4">
+                        <h3 class="font-bold text-lg text-sbk-darkText flex items-center gap-2">
+                            <i class="fa-solid fa-list-ul text-sbk-primary"></i>
+                            <span>영상 주요 타임라인</span>
+                        </h3>
+                        <div class="space-y-2 text-xs">
+                            <div onclick="seekVideo(0)" class="p-3 bg-white rounded-xl border hover:border-sbk-primary cursor-pointer transition-all flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-sbk-primary block">00:00 - 절차서 제정 목적</span>
+                                    <span class="text-gray-500">ISO 14971 기반 세균성 식중독 PCR 위험관리</span>
+                                </div>
+                                <i class="fa-solid fa-play text-gray-400"></i>
+                            </div>
+                            <div onclick="seekVideo(28)" class="p-3 bg-white rounded-xl border hover:border-sbk-primary cursor-pointer transition-all flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-sbk-primary block">00:28 - 적용 범위 및 제품 시스템</span>
+                                    <span class="text-gray-500">Salmonella, STEC, B. cereus 등 정성검출</span>
+                                </div>
+                                <i class="fa-solid fa-play text-gray-400"></i>
+                            </div>
+                            <div onclick="seekVideo(80)" class="p-3 bg-white rounded-xl border hover:border-sbk-primary cursor-pointer transition-all flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-sbk-primary block">01:20 - 5x5 위험 평가 매트릭스</span>
+                                    <span class="text-gray-500">RPN = S x P 수용성 및 보수적 평가</span>
+                                </div>
+                                <i class="fa-solid fa-play text-gray-400"></i>
+                            </div>
+                            <div onclick="seekVideo(140)" class="p-3 bg-white rounded-xl border hover:border-sbk-primary cursor-pointer transition-all flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-sbk-primary block">02:20 - 제조공정 FMEA & CAPA</span>
+                                    <span class="text-gray-500">RPN ≥ 12 및 S ≥ 4 조건 시 즉시 CAPA</span>
+                                </div>
+                                <i class="fa-solid fa-play text-gray-400"></i>
+                            </div>
+                            <div onclick="seekVideo(180)" class="p-3 bg-white rounded-xl border hover:border-sbk-primary cursor-pointer transition-all flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-sbk-primary block">03:00 - 시판 후 모니터링 (PMS)</span>
+                                    <span class="text-gray-500">GenBank 서열 변이 및 식약처 이상사례</span>
+                                </div>
+                                <i class="fa-solid fa-play text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Document Summary Modal -->
+    <div id="document-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="p-6 bg-sbk-primary text-white flex items-center justify-between">
+                <h3 id="modal-title" class="text-xl font-bold">문서 상세보기</h3>
+                <button onclick="closeModal()" class="text-white hover:text-gray-200 text-2xl font-bold">&times;</button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto space-y-4 text-sm text-sbk-darkText leading-relaxed"></div>
+            <div class="p-4 bg-gray-100 border-t flex justify-end gap-2">
+                <button onclick="closeModal()" class="px-5 py-2.5 bg-gray-500 text-white font-medium rounded-xl text-sm">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Image Viewer -->
+    <div id="form-viewer" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3" onclick="if(event.target===this)closeViewer()">
+        <div class="bg-white w-full max-w-5xl rounded-3xl shadow-2xl h-[94vh] flex flex-col overflow-hidden">
+            <div class="px-5 py-3 bg-amber-600 text-white flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <h3 id="viewer-title" class="text-base font-bold truncate"></h3>
+                    <p id="viewer-sub" class="text-xs text-amber-100 truncate"></p>
+                </div>
+                <button onclick="closeViewer()" class="text-white hover:text-amber-100 text-2xl font-bold leading-none" aria-label="닫기">&times;</button>
+            </div>
+            <div id="viewer-docs" class="flex gap-2 px-4 py-2 border-b overflow-x-auto no-scrollbar bg-amber-50"></div>
+            <div id="viewer-stage" class="flex-1 overflow-auto bg-gray-200 p-3 text-center">
+                <img id="viewer-img" alt="양식 미리보기" onclick="toggleZoom()" class="mx-auto bg-white shadow-lg cursor-zoom-in max-w-full">
+            </div>
+            <div id="viewer-thumbs" class="flex gap-2 px-3 py-2 border-t overflow-x-auto no-scrollbar bg-white"></div>
+            <div class="px-4 py-3 bg-gray-100 border-t flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <button onclick="viewerStep(-1)" class="w-9 h-9 rounded-xl bg-white border hover:bg-gray-50" aria-label="이전"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="viewer-page" class="text-xs font-bold text-gray-600 min-w-[64px] text-center"></span>
+                    <button onclick="viewerStep(1)" class="w-9 h-9 rounded-xl bg-white border hover:bg-gray-50" aria-label="다음"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="toggleZoom()" class="px-3 h-9 rounded-xl bg-white border hover:bg-gray-50 text-xs font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i><span id="zoom-label">확대</span></button>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a id="viewer-open" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl bg-white border hover:bg-gray-50 text-xs font-bold text-gray-700"><i class="fa-solid fa-up-right-from-square mr-1"></i>PDF 원본</a>
+                    <a id="viewer-dl" download class="px-3 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold"><i class="fa-solid fa-download mr-1"></i>다운로드</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-sbk-darkText text-white mt-12 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-sbk-primary flex items-center justify-center font-bold text-white text-sm">SBK</div>
+                <p class="text-xs text-gray-400">© 2026 주식회사 SBK. All Rights Reserved. ISO 13485 / ISO 14971 Certified Company.</p>
+            </div>
+            <div class="flex gap-6 text-xs text-gray-400">
+                <span>품질경영시스템 표준 준수</span>
+                <span>체외진단의료기기 RA/QA 승인</span>
+                <span>고객센터: 02-1234-5678</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // 파일 경로 설정 (파일은 모두 files/ 폴더, 영상은 video.mp4)
+        //   pdf  : 브라우저에서 바로 열람할 PDF
+        //   orig : 다운로드용 원본 파일 (docx / hwp)
+        // 파일이 실제로 없으면 해당 버튼은 자동으로 '준비 중'으로 바뀝니다.
+        // ============================================================
+        const sopData = [
+            {
+                id: 'doc',
+                title: 'PCR 진단키트 문서관리 절차서',
+                code: 'QC-G-02 / QF-DOC-001',
+                summary: '품질경영시스템 관련 문서 및 기록의 제정, 개정, 승인, 배포, 폐기 절차 규정',
+                pdf: 'files/doc-sop.pdf',
+                orig: 'files/doc-sop.hwp',
+                origLabel: 'HWP',
+                content: `
+                    <h4 class="font-bold text-base text-sbk-primary">1. 목적 및 범위</h4>
+                    <p>본 절차서는 (주)SBK의 PCR 진단키트 품질경영시스템에 필요한 모든 문서 및 기록의 표준 관리 체계를 확립함에 목적이 있습니다.</p>
+                    <h4 class="font-bold text-base text-sbk-primary mt-4">2. 주요 내용</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>문서 승인 및 제·개정 관리 (개정번호 및 시행일자 표기)</li>
+                        <li>현장 구문서 잔존 방지 및 최신본 적용 점검 (QF-DOC-003)</li>
+                        <li>전자기록 백업 및 변경 이력 추적성 유지</li>
+                        <li>보존기간: 사용기한 만료 후 최소 5년 보관</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'risk',
+                title: '위험관리 절차서',
+                code: 'SOP-RA-701 / ISO 14971',
+                summary: 'PCR 진단키트 전 수명주기 동안의 위해요인 식별, 위험 평가, 통제 및 PMS 환류 절차',
+                pdf: 'files/risk-sop.pdf',
+                orig: 'files/risk-sop.docx',
+                origLabel: 'DOCX',
+                content: `
+                    <h4 class="font-bold text-base text-sbk-primary">1. 목적</h4>
+                    <p>ISO 14971 및 체외진단의료기기법 표준에 따라 오진(위양성/위음성)으로 인한 환자 위해 방지 및 위험통제 구축.</p>
+                    <h4 class="font-bold text-base text-sbk-primary mt-4">2. 주요 내용</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>5x5 위험 평가 매트릭스 (RPN = S x P) 적용</li>
+                        <li>보수적 평가 원칙: 심각도(S) 4 이상 시 무조건 AFAP 이상 강화 통제</li>
+                        <li>RPN ≥ 12 이상 시 즉시 CAPA 발의 및 출하 보류</li>
+                        <li>GenBank 등 유전자 변이 모니터링을 통한 PMS 환류</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'test',
+                title: '시험 및 검사 절차서',
+                code: 'QC-P-08 / sbk-401',
+                summary: '원자재 입고검사, 공정검사 및 완제품 최종 시험검사 적합성 판정 지침',
+                pdf: 'files/test-sop.pdf',
+                orig: 'files/test-sop.docx',
+                origLabel: 'DOCX',
+                content: `
+                    <h4 class="font-bold text-base text-sbk-primary">1. 목적</h4>
+                    <p>입고 원자재, 공정 재공품 및 PCR 완제품의 성능 규격 충족 여부 시험 및 출하 승인.</p>
+                    <h4 class="font-bold text-base text-sbk-primary mt-4">2. 주요 내용</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>입고검사 (QC-F-01): 원료 CoA 대조, Cold Chain 수송 온도 및 LoD 성능 검증</li>
+                        <li>공정검사 (QC-F-02): MasterMix 분주 정확도, 캡핑 및 Seal 밀봉 검사</li>
+                        <li>완제품검사 (QC-F-03): Positive/Negative/Internal Control Ct 기준 판정</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'trace',
+                title: '식별 및 추적관리 절차서',
+                code: 'sbk-401 / ISO 13485 7.5.9',
+                summary: '원부자재 입고부터 제조 Lot, UDI 코드, 출하처까지 전 과정 양방향 추적성 유지',
+                pdf: 'files/trace-sop.pdf',
+                orig: 'files/trace-sop.docx',
+                origLabel: 'DOCX',
+                content: `
+                    <h4 class="font-bold text-base text-sbk-primary">1. 목적</h4>
+                    <p>제조번호(Lot) 및 UDI 바코드를 활용하여 원자재에서 최종 유통처까지의 유통 이력 역추적 체계 구축.</p>
+                    <h4 class="font-bold text-base text-sbk-primary mt-4">2. 주요 내용</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>UDI-DI 및 UDI-PI (Lot, 사용기한) 라벨링 100% 비전 검증</li>
+                        <li>상태 식별 라벨 (검사대기:황색, 합격:녹색, 부적합:적색, 반품격리:적색)</li>
+                        <li>완제품 출하 및 유통 추적관리대장 (QC-F-01) 작성</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'capa',
+                title: 'CAPA (시정 및 예방조치) 절차서',
+                code: 'SOP-CAPA-01 / QF-CAPA-001',
+                summary: '부적합 및 문제 재발 방지를 위한 근본 원인 분석(5-Why/4M) 및 효과성 검증 절차',
+                pdf: 'files/capa-sop.pdf',
+                orig: 'files/capa-sop.hwp',
+                origLabel: 'HWP',
+                content: `
+                    <h4 class="font-bold text-base text-sbk-primary">1. 목적</h4>
+                    <p>품질 부적합, 고객불만 발생 시 시정 및 예방조치를 통한 품질 시스템의 지속적 개선.</p>
+                    <h4 class="font-bold text-base text-sbk-primary mt-4">2. 주요 내용</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>발행 기준: RPN ≥ 12, 반복 부적합, S ≥ 4 부적합 발생 시</li>
+                        <li>근본 원인 분석: 5-Why 및 4M (Man, Machine, Material, Method)</li>
+                        <li>최소 3개월/3개 Lot 대상 효과성 검증 후 종결 승인</li>
+                    </ul>
+                `
+            }
+        ];
+
+        // 양식 데이터: prefix = files/previews/{prefix}-{페이지}.jpg (PDF를 페이지별 이미지로 변환한 파일)
+        // items[].pages = [시작쪽, 끝쪽]
+        const formsData = [
+            { id: 'f1', prefix: 'doc', pages: 5, sop: 'doc', title: '문서관리 양식', code: 'QF-DOC-001/002/003', file: 'files/doc-form.pdf', desc: '문서관리대장 · 개정 및 승인 기록서 · 배포 및 회수대장', items: [
+                { code: 'QF-DOC-001', name: '문서관리대장', pages: [1,1], sum: '관리 중인 품질문서의 등록·개정상태·유효 여부·보관위치를 기록', fields: ['문서번호·문서명', '개정번호', '제정/개정·시행일자', '문서상태(유효/폐기)', '보관위치'] },
+                { code: 'QF-DOC-002', name: '문서 개정 및 승인 기록서', pages: [2,3], sum: '개정 사유와 변경 전·후 내용을 대조하고 검토·승인 후 최신본을 배포', fields: ['기존/변경 개정번호', '개정 사유', '변경 내용 대조', '작성·검토·승인'] },
+                { code: 'QF-DOC-003', name: '문서 배포 및 회수대장', pages: [4,5], sum: '부서별 배포 현황과 구문서 회수(폐기/별도보관), 현장 잔존 여부를 확인', fields: ['배포부서·수령자', '구문서 회수', '구문서 잔존 여부', '전자문서 최신본 적용'] }
+            ]},
+            { id: 'f2', prefix: 'risk', pages: 5, sop: 'risk', title: '위험관리 양식 (Plan/Report/FMEA)', code: 'QF-RA-701-01/02/03', file: 'files/risk-form.pdf', desc: '위험관리 계획서 · 보고서 · 제조공정 FMEA', items: [
+                { code: 'QF-RA-701-03', name: '제조공정 FMEA', pages: [1,1], sum: '원자재 입고~출하 12개 공정(F-01~F-12)의 고장유형을 S·O·D로 평가해 RPN과 수락/AFAP/비수락 판정', fields: ['잠재적 고장유형·영향·원인', 'S·O·D → P·RPN', '권고 조치', '조치 후 재평가'] },
+                { code: 'QF-RA-701-01', name: '위험관리 계획서', pages: [2,3], sum: '적용범위·의도된 용도, 위험관리팀, 수용성 기준, 위험통제 검증 계획 및 생산 후 정보 수집 계획', fields: ['적용 구성품·표적·검체', '위험관리팀 구성', 'LoD·교차반응·간섭·정밀도', '안정성·임상성능', '승인'] },
+                { code: 'QF-RA-701-02', name: '위험관리 보고서', pages: [4,5], sum: '계획 이행 확인(ISO 14971 9), 잔여위험·이익-위험 분석, 출하 가능/불가 판정', fields: ['계획 이행 확인', '통제 전/후 위험 요약', '전체 잔여위험 평가', '최종 승인'] }
+            ]},
+            { id: 'f3', prefix: 'test', pages: 10, sop: 'test', title: '시험 및 검사 양식 (입고/공정/완제품)', code: 'QC-F-01~03', file: 'files/test-form.pdf', desc: '입고품 시험·검사 성적서 · 공정 검사 기록서 · 완제품 시험성적서', items: [
+                { code: 'QC-F-01', name: '입고품 시험·검사 성적서', pages: [1,3], sum: '입고 서류·운송온도 확인, KS Q ISO 2859-1 샘플링(AQL) 검사, 결함 구분별 합격/불합격 및 부적합 처리', fields: ['CoA·운송 온도', '샘플링 조건(AQL)', '항목별 검사 결과', '종합 판정·부적합 처리'] },
+                { code: 'QC-F-02', name: '공정 검사 기록서', pages: [4,5], sum: '시약조제·분주·밀봉/라벨링·성능확인·포장의 13개 공정 검사 항목과 장비 교정 확인', fields: ['조제량 ±2% · 분주량 ±5%', '양성대조 Ct ≤ 30', '반복 정밀도 CV ≤ 5%', '장비 교정 확인'] },
+                { code: 'QC-F-03', name: '완제품 시험성적서', pages: [6,10], sum: 'STEP 1~7 순서로 시험 의뢰·준비·외관·성능시험·원자재 LOT 추적·최종 판정·출하 승인까지 기록', fields: ['양성/음성대조', '민감도·특이도·검출한계', '원자재 LOT 추적', '합격/보류/불합격', '출하 승인'] }
+            ]},
+            { id: 'f4', prefix: 'trace', pages: 10, sop: 'trace', title: '식별 및 추적관리 양식', code: 'QC-F-01/02/03', file: 'files/trace-form.pdf', desc: '출하·유통 추적관리대장 · Lot 추적관리 기록서 · 제품 식별 및 상태관리 기록서', items: [
+                { code: 'QC-F-01', name: '완제품 출하 및 유통 추적관리대장', pages: [1,2], sum: '출하할 때마다 한 줄씩 Lot·UDI-DI·출하처·유통경로·최종공급처와 출하판정, 반품·회수 여부를 기록', fields: ['UDI-DI·Lot·사용기한', '출하처·유통경로', '운송·보관 조건', '출하판정', '반품·회수'] },
+                { code: 'QC-F-02', name: '제조 Lot 및 검체분석데이터 추적관리 기록서', pages: [3,8], sum: 'Lot 1건마다 원부자재 공급자 Lot부터 공정·장비·환경, 검체분석 원자료까지 이력을 연결', fields: ['원부자재·반제품 Lot', '공정·장비·환경 기록', '분석 Run ID·원자료', 'Run 유효성(PC/NTC/IC)', '출하판정 연계'] },
+                { code: 'QC-F-03', name: '제품 식별 및 상태관리 기록서', pages: [9,10], sum: '입고품·공정중제품·완제품의 상태 식별(검사대기~반품격리), 공정별 점검, 부적합(NCR) 처리', fields: ['상태 라벨 색상·전산 코드', '보관구역 지정', '공정별 점검 항목', '부적합 보고(NCR)'] }
+            ]},
+            { id: 'f5', prefix: 'capa', pages: 5, sop: 'capa', title: 'CAPA 시정 및 예방조치 양식', code: 'QF-CAPA-001/003', file: 'files/capa-form.pdf', desc: 'CAPA 요구/보고서 · 효과성 확인 기록서 · CAPA 관리대장', items: [
+                { code: 'QF-CAPA-001', name: 'CAPA 요구/보고서', pages: [1,1], sum: 'CAPA 발행 정보, 즉각 봉쇄 조치, 근본원인 분석(5-Why/4M), 조치 계획과 완료 승인', fields: ['발행 구분·출처', '봉쇄·임시 조치', '근본원인 분석', '조치 계획·실행확인'] },
+                { code: 'QA-F-401-03', name: 'CAPA 효과성 확인 기록서', pages: [2,4], sum: '관찰기간·합격기준에 따라 재발 여부를 확인하고 첨부 증거를 점검한 뒤 종결 판정', fields: ['효과성 확인 계획', '확인 결과 데이터', '재발·부작용 확인', '종합 판정·종결'] },
+                { code: 'QF-CAPA-003', name: 'CAPA 관리대장', pages: [5,5], sum: 'CAPA 번호별 발행·완료기한·효과성·종결 상태를 연도별로 추적', fields: ['CAPA 번호·구분', '발생출처·제목', '완료기한·조치일', 'Open/Progress/Closed'] }
+            ]}
+        ];
+        const pv = (f, n) => `files/previews/${f.prefix}-${n}.jpg`;
+
+        // Quiz bank: ans(정답), alt(허용 가능한 다른 표기, 주관식만)
+        const quizBank = [
+            // 문서관리
+            { sop: '문서관리', type: 'choice', q: '문서관리 절차서에 따라 개정된 최신 문서를 배포할 때 구문서에 대해 취해야 하는 조치는?', options: ['모두 보관함에 보관한다', '즉시 회수하여 폐기하거나 구문서 표시를 한다', '외부에 공개한다', '아무 조치도 하지 않는다'], ans: 1 },
+            { sop: '문서관리', type: 'choice', q: '품질 기록의 최소 보존기간은 일반적으로 해당 Lot 사용기한 만료일로부터 몇 년인가?', options: ['1년', '3년', '5년', '10년'], ans: 2 },
+            { sop: '문서관리', type: 'short', q: '현장에 승인되지 않은 옛 버전 문서가 남아있지 않음을 확인하는 점검 양식 번호는? (힌트: QF-DOC-003)', ans: 'QF-DOC-003' },
+            { sop: '문서관리', type: 'choice', q: '승인된 품질 기록을 정정할 때 올바른 방법은?', options: ['화이트로 지우고 위에 쓴다', '원래 내용을 알아볼 수 있게 한 줄/두 줄 긋고 정정자, 정정일, 사유를 기재한다', '페이지를 찢어버린다', '새 종이에 다시 쓴다'], ans: 1 },
+            { sop: '문서관리', type: 'short', q: '문서의 개정 사유, 개정 내용, 검토 및 승인을 기록하는 양식(QF-DOC-002)의 명칭은?', ans: '문서 개정 및 승인 기록서', alt: ['개정 및 승인 기록서', '문서개정및승인기록서'] },
+
+            // 위험관리
+            { sop: '위험관리', type: 'choice', q: 'SOP-RA-701 위험관리 절차서에서 RPN(위험지수)을 산출하는 공식은?', options: ['RPN = 심각성(S) + 발생가능성(P)', 'RPN = 심각성(S) x 발생가능성(P)', 'RPN = 발생가능성(P) / 심각성(S)', 'RPN = 검출도(D) x 100'], ans: 1 },
+            { sop: '위험관리', type: 'choice', q: '위험 평가 결과 RPN이 몇 점 이상일 때 무조건 비수락(Unacceptable)으로 판정하고 출하를 보류하는가?', options: ['5점', '8점', '12점', '20점'], ans: 2 },
+            { sop: '위험관리', type: 'short', q: '심각도(S)가 4 이상인 경우 RPN 점수와 관계없이 적용되는 보수적 위험 저감 원칙의 영문 약어 4글자는?', ans: 'AFAP' },
+            { sop: '위험관리', type: 'choice', q: '위험통제 조치 우선순위 중 1순위에 해당하는 것은?', options: ['라벨 주의사항 기재', '설계에 의한 본질적 안전 (Primer 재설계, UDG 도입 등)', '사용자 교육', '작업자 가운 착용'], ans: 1 },
+            { sop: '위험관리', type: 'short', q: '제조공정 단계별 고장 유형과 영향을 분석하는 위험 평가 기법의 영문 약어는?', ans: 'FMEA' },
+
+            // 시험 및 검사
+            { sop: '시험및검사', type: 'choice', q: 'PCR 진단키트 완제품 성능시험에서 오염 여부를 확인하기 위해 사용하는 대조군은?', options: ['Positive Control', 'Negative Control (NTC)', 'Internal Control', 'Calibration Standard'], ans: 1 },
+            { sop: '시험및검사', type: 'choice', q: '입고품 시험검사에서 Cold Chain 온도가 이탈하여 도착한 경우 취해야 하는 조치는?', options: ['즉시 합격 처리한다', '부적합 격리 후 원인 조사 및 영향을 평가한다', '드라이아이스를 넣고 사용한다', '상온에 보관한다'], ans: 1 },
+            { sop: '시험및검사', type: 'short', q: '시약 반응 및 핵산 추출 유효성을 증명하기 위해 각 반응 튜브에 포함되는 내부 대조군의 영문 약어는?', ans: 'IC' },
+            { sop: '시험및검사', type: 'choice', q: '시험검사 결과가 부적합인 제품에 부착하는 라벨의 색상은?', options: ['녹색', '황색', '적색', '주황색'], ans: 2 },
+            { sop: '시험및검사', type: 'short', q: '완제품 시험성적서에 최종 출하 승인 서명을 할 수 있는 최종 권한자는 누구인가?', ans: '품질관리책임자', alt: ['품질책임자'] },
+
+            // 식별 및 추적관리
+            { sop: '식별추적', type: 'choice', q: '의료기기 표준코드(UDI)에서 제품별 고유 식별자를 나타내는 부분은?', options: ['UDI-PI', 'UDI-DI', 'GS1-128', 'Lot No'], ans: 1 },
+            { sop: '식별추적', type: 'choice', q: 'UDI-PI(생산식별자)에 포함되지 않는 정보는?', options: ['제조번호(Lot)', '사용기한(EXP)', '제조연월일(MFG)', '대표이사 성명'], ans: 3 },
+            { sop: '식별추적', type: 'short', q: '검사 대기 중인 원자재 및 반제품에 부착하는 식별 라벨의 표준 색상은 무엇인가?', ans: '황색', alt: ['노란색', '노랑', '노랑색', 'yellow'] },
+            { sop: '식별추적', type: 'choice', q: '추적성 모의 추적(Mock Traceability Test)은 최소 연 몇 회 이상 실시해야 하는가?', options: ['연 1회', '연 2회', '연 5회', '5년에 1회'], ans: 0 },
+            { sop: '식별추적', type: 'short', q: '완제품 출하 시 출하처, 수량, 유통경로를 기록하는 대장의 양식 번호는? (힌트: QC-F-01)', ans: 'QC-F-01' },
+
+            // CAPA
+            { sop: 'CAPA', type: 'choice', q: 'CAPA(시정 및 예방조치)의 주요 목적은 무엇인가?', options: ['작업자 처벌', '부적합의 근본 원인을 규명하고 재발을 방지함', '서류 작업 증가', '제품 가격 인상'], ans: 1 },
+            { sop: 'CAPA', type: 'choice', q: '근본 원인 분석 시 사용하는 대표적인 분석 기법은?', options: ['5-Why 및 4M 분석', 'SWOT 분석', 'BCG 매트릭스', 'PEST 분석'], ans: 0 },
+            { sop: 'CAPA', type: 'short', q: 'CAPA 조치 실행 후 효과성을 검증하기 위해 관찰해야 하는 최소 로트(Lot) 수는 몇 개 이상인가?', ans: '3개', alt: ['3', '세개', '3lot', '3로트'] },
+            { sop: 'CAPA', type: 'choice', q: 'CAPA 효과성 검증 합격 기준은?', options: ['동일 원인 부적합 재발 0건', '부적합 50% 감소', '작업자 구두 보고', '서류 제출'], ans: 0 },
+            { sop: 'CAPA', type: 'short', q: 'CAPA 관리대장에서 조치가 완료되고 효과성 검증까지 승인된 상태를 나타내는 영문 단어는?', ans: 'Closed', alt: ['close'] }
+        ];
+
+        let currentActiveQuiz = [];
+
+        const norm = s => String(s).replace(/\s+/g, '').toLowerCase();
+
+        // ----- Tabs -----
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const targetPage = document.getElementById(`page-${tabId}`);
+            if (targetPage) targetPage.classList.remove('hidden');
+
+            ['tab-', 'mtab-'].forEach(prefix => {
+                const b = document.getElementById(prefix + tabId);
+                if (b) b.classList.add('active');
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ----- SOP cards -----
+        function renderSOPs() {
+            const container = document.getElementById('sop-list-container');
+            container.innerHTML = sopData.map(sop => `
+                <div class="bg-white rounded-2xl border border-sbk-borderColor p-6 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <span class="bg-sbk-primaryLight text-sbk-primary font-bold text-xs px-3 py-1 rounded-full inline-block mb-3">${sop.code}</span>
+                        <h3 class="font-bold text-lg text-sbk-darkText mb-2">${sop.title}</h3>
+                        <p class="text-xs text-sbk-lightText leading-relaxed mb-4">${sop.summary}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="openModal('${sop.id}')" class="w-full bg-gray-100 hover:bg-gray-200 text-sbk-darkText text-xs font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-list"></i><span>요약 보기</span>
+                        </button>
+                        <a data-check="${sop.pdf}" data-kind="open" href="${sop.pdf}" target="_blank" rel="noopener" class="w-full bg-sbk-primary hover:bg-sbk-primaryHover text-white text-xs font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i><span>절차서 원문 열람 (PDF)</span>
+                        </a>
+                        <a data-check="${sop.orig}" data-kind="download" href="${sop.orig}" download class="w-full border border-sbk-primary text-sbk-primary hover:bg-sbk-primaryLight text-xs font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download"></i><span>원본 다운로드 (${sop.origLabel})</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ----- Forms cards (관련양식 탭) -----
+        function renderForms() {
+            const container = document.getElementById('forms-list-container');
+            container.innerHTML = formsData.map(form => `
+                <div class="bg-white rounded-2xl border border-sbk-borderColor overflow-hidden hover:shadow-xl transition-all flex flex-col">
+                    <button onclick="openViewer('${form.id}', 1)" class="relative block bg-gray-100 h-56 overflow-hidden group" aria-label="${form.title} 미리보기">
+                        <img src="${pv(form, 1)}" alt="${form.title} 첫 페이지" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'">
+                        <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] font-bold px-2 py-1 rounded-full">${form.pages}쪽</span>
+                        <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent text-white text-xs font-bold py-3 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-expand mr-1"></i>이미지로 보기</span>
+                    </button>
+                    <div class="p-5 flex flex-col justify-between flex-1">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 block mb-1">${form.code}</span>
+                            <h3 class="font-bold text-base text-sbk-darkText mb-2">${form.title}</h3>
+                            <p class="text-xs text-sbk-lightText mb-4">${form.desc}</p>
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="openViewer('${form.id}', 1)" class="w-full bg-gray-100 hover:bg-gray-200 text-sbk-darkText text-xs font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-images"></i> 양식 이미지 미리보기
+                            </button>
+                            <a data-check="${form.file}" data-kind="download" href="${form.file}" download class="w-full bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> 양식 파일 다운로드
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ----- 절차서 > 양식 미리보기 (요약 + 다운로드) -----
+        function renderSopForms() {
+            const container = document.getElementById('sop-forms-container');
+            container.innerHTML = formsData.map(form => {
+                const sop = sopData.find(x => x.id === form.sop);
+                return `
+                <div class="rounded-2xl border border-sbk-borderColor overflow-hidden">
+                    <div class="bg-amber-50 px-5 py-4 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-amber-100">
+                        <div>
+                            <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">${sop ? sop.title : ''}</span>
+                            <h3 class="font-bold text-base text-sbk-darkText mt-2">${form.title}</h3>
+                            <p class="text-xs text-sbk-lightText">${form.code} · 총 ${form.pages}쪽</p>
+                        </div>
+                        <div class="flex gap-2 shrink-0">
+                            <button onclick="openViewer('${form.id}', 1)" class="bg-white border border-amber-300 text-amber-700 hover:bg-amber-100 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5"><i class="fa-solid fa-images"></i>전체 이미지</button>
+                            <a data-check="${form.file}" data-kind="download" href="${form.file}" download class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5"><i class="fa-solid fa-download"></i>PDF 다운로드</a>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-gray-100">
+                        ${form.items.map(it => `
+                        <div class="p-4 flex gap-4 items-start">
+                            <button onclick="openViewer('${form.id}', ${it.pages[0]})" class="shrink-0 w-20 h-28 rounded-lg border bg-gray-100 overflow-hidden hover:shadow-md" aria-label="${it.name} 보기">
+                                <img src="${pv(form, it.pages[0])}" alt="" loading="lazy" class="w-full h-full object-cover object-top" onerror="this.style.display='none'">
+                            </button>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex flex-wrap items-center gap-2 mb-1">
+                                    <span class="text-[11px] font-bold text-sbk-primary bg-sbk-primaryLight px-2 py-0.5 rounded-full">${it.code}</span>
+                                    <span class="text-[11px] text-gray-400">${it.pages[0] === it.pages[1] ? it.pages[0] + '쪽' : it.pages[0] + '–' + it.pages[1] + '쪽'}</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-sbk-darkText">${it.name}</h4>
+                                <p class="text-xs text-sbk-lightText leading-relaxed mt-1">${it.sum}</p>
+                                <div class="flex flex-wrap gap-1.5 mt-2">${it.fields.map(f => `<span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-md">${f}</span>`).join('')}</div>
+                            </div>
+                            <button onclick="openViewer('${form.id}', ${it.pages[0]})" class="hidden sm:flex shrink-0 text-xs font-bold text-sbk-primary hover:underline items-center gap-1"><i class="fa-solid fa-eye"></i>보기</button>
+                        </div>`).join('')}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function switchSopPane(pane) {
+            document.getElementById('sop-pane-list').classList.toggle('hidden', pane !== 'list');
+            document.getElementById('sop-pane-forms').classList.toggle('hidden', pane !== 'forms');
+            document.getElementById('subtab-list').classList.toggle('active', pane === 'list');
+            document.getElementById('subtab-forms').classList.toggle('active', pane === 'forms');
+        }
+
+        // ----- 양식 이미지 뷰어 -----
+        let viewer = { form: null, page: 1, zoom: false };
+        function openViewer(formId, page) {
+            viewer.form = formsData.find(f => f.id === formId);
+            if (!viewer.form) return;
+            const f = viewer.form;
+            document.getElementById('viewer-title').textContent = f.title;
+            document.getElementById('viewer-sub').textContent = f.code;
+            const open = document.getElementById('viewer-open'), dl = document.getElementById('viewer-dl');
+            open.href = f.file; dl.href = f.file;
+            document.getElementById('viewer-docs').innerHTML = f.items.map((it, i) => `
+                <button data-doc="${i}" onclick="showPage(${it.pages[0]})" class="whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-full border bg-white hover:border-amber-500 transition-all">${it.code} ${it.name}</button>`).join('');
+            document.getElementById('viewer-thumbs').innerHTML = Array.from({ length: f.pages }, (_, i) => `
+                <button data-pg="${i + 1}" onclick="showPage(${i + 1})" class="thumb-btn shrink-0 w-14 h-20 rounded-md border-2 border-transparent overflow-hidden bg-gray-100 relative">
+                    <img src="${pv(f, i + 1)}" alt="" loading="lazy" class="w-full h-full object-cover object-top">
+                    <span class="absolute bottom-0 inset-x-0 bg-black/50 text-white text-[9px] font-bold">${i + 1}</span>
+                </button>`).join('');
+            viewer.zoom = false;
+            document.getElementById('form-viewer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            showPage(page || 1);
+        }
+        function showPage(n) {
+            const f = viewer.form; if (!f) return;
+            viewer.page = Math.min(Math.max(1, n), f.pages);
+            const img = document.getElementById('viewer-img');
+            img.src = pv(f, viewer.page);
+            applyZoom();
+            document.getElementById('viewer-stage').scrollTo({ top: 0, left: 0 });
+            document.getElementById('viewer-page').textContent = `${viewer.page} / ${f.pages}`;
+            document.querySelectorAll('#viewer-thumbs .thumb-btn').forEach(b => {
+                const on = +b.dataset.pg === viewer.page;
+                b.classList.toggle('active', on);
+                if (on) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+            });
+            document.querySelectorAll('#viewer-docs button').forEach(b => {
+                const it = f.items[+b.dataset.doc];
+                const on = viewer.page >= it.pages[0] && viewer.page <= it.pages[1];
+                b.classList.toggle('bg-amber-600', on); b.classList.toggle('text-white', on);
+                b.classList.toggle('border-amber-600', on); b.classList.toggle('bg-white', !on);
+            });
+        }
+        function viewerStep(d) { showPage(viewer.page + d); }
+        function applyZoom() {
+            const img = document.getElementById('viewer-img');
+            img.style.width = viewer.zoom ? '200%' : '';
+            img.style.maxWidth = viewer.zoom ? 'none' : '100%';
+            img.classList.toggle('cursor-zoom-in', !viewer.zoom);
+            img.classList.toggle('cursor-zoom-out', viewer.zoom);
+            document.getElementById('zoom-label').textContent = viewer.zoom ? '축소' : '확대';
+        }
+        function toggleZoom() { viewer.zoom = !viewer.zoom; applyZoom(); }
+        function closeViewer() {
+            document.getElementById('form-viewer').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // 파일이 실제로 있는지 확인하고, 없으면(404) 버튼을 '준비 중'으로 표시
+        function checkFileLinks() {
+            document.querySelectorAll('a[data-check]').forEach(a => {
+                fetch(a.dataset.check, { method: 'HEAD' })
+                    .then(res => { if (!res.ok) markMissing(a); })
+                    .catch(() => { /* 로컬(file://) 등 확인 불가 시에는 그대로 둠 */ });
+            });
+        }
+        function markMissing(a) {
+            const span = document.createElement('span');
+            span.className = 'w-full bg-gray-100 text-gray-400 text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed';
+            span.innerHTML = '<i class="fa-solid fa-clock"></i><span>' +
+                (a.dataset.kind === 'open' ? 'PDF 열람본 준비 중' : '파일 준비 중') + '</span>';
+            a.replaceWith(span);
+        }
+
+        // ----- Quiz -----
+        function loadRandomQuiz() {
+            const shuffled = [...quizBank].sort(() => Math.random() - 0.5);
+            currentActiveQuiz = shuffled;
+
+            const container = document.getElementById('quiz-container');
+            document.getElementById('quiz-score-board').classList.add('hidden');
+
+            container.innerHTML = shuffled.map((item, idx) => {
+                if (item.type === 'choice') {
+                    return `
+                        <div class="bg-white p-6 rounded-2xl border border-sbk-borderColor smooth-shadow space-y-4" id="quiz-card-${idx}">
+                            <div class="flex items-center justify-between">
+                                <span class="bg-purple-100 text-purple-700 font-bold text-xs px-3 py-1 rounded-full">${item.sop}</span>
+                                <span class="text-xs font-semibold text-gray-400">문제 ${idx + 1} / 25</span>
+                            </div>
+                            <h4 class="font-bold text-base text-sbk-darkText">${idx + 1}. ${item.q}</h4>
+                            <div class="space-y-2">
+                                ${item.options.map((opt, oIdx) => `
+                                    <label class="quiz-option flex items-center gap-3 p-3 rounded-xl border border-gray-200 cursor-pointer transition-all">
+                                        <input type="radio" name="quiz-${idx}" value="${oIdx}" class="text-sbk-primary focus:ring-sbk-primary">
+                                        <span class="text-xs text-gray-700 font-medium">${opt}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                            <div class="hidden text-xs font-bold p-3 rounded-xl mt-2" id="quiz-ans-${idx}"></div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="bg-white p-6 rounded-2xl border border-sbk-borderColor smooth-shadow space-y-4" id="quiz-card-${idx}">
+                            <div class="flex items-center justify-between">
+                                <span class="bg-blue-100 text-blue-700 font-bold text-xs px-3 py-1 rounded-full">${item.sop} (주관식)</span>
+                                <span class="text-xs font-semibold text-gray-400">문제 ${idx + 1} / 25</span>
+                            </div>
+                            <h4 class="font-bold text-base text-sbk-darkText">${idx + 1}. ${item.q}</h4>
+                            <div>
+                                <input type="text" id="quiz-input-${idx}" placeholder="정답을 입력하세요" class="w-full p-3 text-xs rounded-xl border border-gray-300 focus:border-sbk-primary focus:outline-none">
+                            </div>
+                            <div class="hidden text-xs font-bold p-3 rounded-xl mt-2" id="quiz-ans-${idx}"></div>
+                        </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        function submitQuiz() {
+            let score = 0;
+
+            currentActiveQuiz.forEach((item, idx) => {
+                const ansBox = document.getElementById(`quiz-ans-${idx}`);
+                ansBox.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
+                let correct = false;
+                let answerText = '';
+
+                if (item.type === 'choice') {
+                    const selected = document.querySelector(`input[name="quiz-${idx}"]:checked`);
+                    correct = !!selected && parseInt(selected.value) === item.ans;
+                    answerText = item.options[item.ans];
+                } else {
+                    const inputVal = norm(document.getElementById(`quiz-input-${idx}`).value);
+                    const accepted = [item.ans, ...(item.alt || [])].map(norm);
+                    correct = inputVal !== '' && accepted.includes(inputVal);
+                    answerText = item.ans;
+                }
+
+                if (correct) {
+                    score++;
+                    ansBox.classList.add('bg-emerald-100', 'text-emerald-800');
+                    ansBox.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> 정답입니다!`;
+                } else {
+                    ansBox.classList.add('bg-red-100', 'text-red-800');
+                    ansBox.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> 오답! 정답: ${answerText}`;
+                }
+            });
+
+            const scoreBoard = document.getElementById('quiz-score-board');
+            document.getElementById('score-text').innerText = `${score} / 25 점 (${Math.round(score / 25 * 100)}점)`;
+            scoreBoard.classList.remove('hidden');
+            window.scrollTo({ top: scoreBoard.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        }
+
+        // ----- Modal -----
+        function openModal(sopId) {
+            const sop = sopData.find(s => s.id === sopId);
+            if (!sop) return;
+            document.getElementById('modal-title').innerText = sop.title;
+            document.getElementById('modal-body').innerHTML = sop.content;
+            document.getElementById('document-modal').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('document-modal').classList.add('hidden');
+        }
+        document.addEventListener('keydown', e => {
+            const open = !document.getElementById('form-viewer').classList.contains('hidden');
+            if (e.key === 'Escape') { closeModal(); closeViewer(); }
+            else if (open && e.key === 'ArrowLeft') viewerStep(-1);
+            else if (open && e.key === 'ArrowRight') viewerStep(1);
+        });
+
+        // ----- Video -----
+        function seekVideo(seconds) {
+            const video = document.getElementById('pcr-overview-video');
+            if (video) {
+                video.currentTime = seconds;
+                video.play();
+            }
+        }
+
+        // ----- Init -----
+        window.onload = function () {
+            renderSOPs();
+            renderForms();
+            renderSopForms();
+            loadRandomQuiz();
+            checkFileLinks();
+            switchTab('main');
+
+            const video = document.getElementById('pcr-overview-video');
+            const source = video.querySelector('source');
+            const showErr = () => document.getElementById('video-error').classList.remove('hidden');
+            video.addEventListener('error', showErr);
+            source.addEventListener('error', showErr);
+        };
+    </script>
+</body>
+</html>
